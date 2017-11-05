@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef5fe6c7-fb49-4518-9159-5ece3e719755">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#8A9299">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="1.0" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="1.0" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="1.0" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FEFEFE"/>
+			<bottomPen lineWidth="0.5" lineColor="#FEFEFE"/>
+		</box>
+	</style>
+	<subDataset name="activos_corrientes" uuid="83907468-fae5-4233-b673-d11d8295e5dc">
+		<queryString>
+			<![CDATA[SELECT
+     cuentas.`nombreCuenta` AS cuentas_nombreCuenta,
+     cuentas.`saldo` AS cuentas_saldo
+FROM
+     `cuentas` cuentas
+WHERE
+     cuentas.`tipoCuenta` = 6]]>
+		</queryString>
+		<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+		<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+		<group name="cuentas_saldo">
+			<groupExpression><![CDATA[$F{cuentas_saldo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="activos_no_corrientes" uuid="c5b22518-8f81-4e3a-9063-b30a53a38354">
+		<queryString language="SQL">
+			<![CDATA[SELECT cuentas.`nombreCuenta` AS cuentas_nombreCuenta,
+	cuentas.`saldo` AS cuentas_saldo
+FROM `cuentas` cuentas 
+WHERE cuentas.`tipoCuenta` =  7]]>
+		</queryString>
+		<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+		<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+		<group name="cuentas_saldo">
+			<groupExpression><![CDATA[$F{cuentas_saldo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="pasivos_corrientes" uuid="29f469d7-2572-4648-889f-42d7c6d0596d">
+		<queryString language="SQL">
+			<![CDATA[SELECT  cuentas.`nombreCuenta` AS cuentas_nombreCuenta, cuentas.`saldo` AS cuentas_saldo
+FROM `cuentas` cuentas 
+WHERE cuentas.`tipoCuenta` =  8]]>
+		</queryString>
+		<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+		<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+		<group name="cuentas_saldo">
+			<groupExpression><![CDATA[$F{cuentas_saldo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="pasivos_no_corrientes" uuid="a23e7085-3e78-4d9f-828e-9363de8fdeeb">
+		<queryString language="SQL">
+			<![CDATA[SELECT  cuentas.`nombreCuenta` AS cuentas_nombreCuenta, cuentas.`saldo` AS cuentas_saldo
+FROM `cuentas` cuentas 
+WHERE cuentas.`tipoCuenta` =  9]]>
+		</queryString>
+		<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+		<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+		<group name="cuentas_saldo">
+			<groupExpression><![CDATA[$F{cuentas_saldo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="capital" uuid="602b77ad-a0c6-4feb-b1b4-0ab73adbafa7">
+		<queryString language="SQL">
+			<![CDATA[SELECT  cuentas.`nombreCuenta` AS cuentas_nombreCuenta, cuentas.`saldo` AS cuentas_saldo
+FROM `cuentas` cuentas 
+WHERE cuentas.`tipoCuenta` =  5]]>
+		</queryString>
+		<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+		<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+		<group name="cuentas_saldo">
+			<groupExpression><![CDATA[$F{cuentas_saldo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/wxlter97/NetBeansProjects/analisisFinanciero/analisisFinanciero-web/src/main/webapp/resources/reports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT COUNT(id) FROM cuentas]]>
+	</queryString>
+	<field name="COUNT(id)" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="228" y="8" width="100" height="20" uuid="21edf060-0d1f-4a02-be3a-02004de32a3e"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[Balance General]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="21" width="157" height="20" uuid="c2721c11-34dc-46b9-8374-64bf6a61a242"/>
+				<textElement>
+					<font fontName="URW Gothic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Almacenes SIMAN, S.A. de C.V.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="33" width="256" height="20" uuid="fe015215-337c-4e93-8de4-14fc35c5c5a8"/>
+				<textElement>
+					<font fontName="URW Gothic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Periodo del 1 de Enero al 31 de Diciembre de 2017]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="459" y="4" width="90" height="20" uuid="80a35730-ffcd-4b87-894e-27d954121b55"/>
+				<textElement>
+					<font fontName="URW Gothic" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(Valores en US$)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="56" y="65" width="172" height="20" uuid="94d8a2cd-67f6-47ca-a7bd-9b52a3696d1b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="activos_corrientes" uuid="8c405cbe-091e-46a3-a64d-c3ba037c9fe2">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e7fc1392-4fe1-4055-9878-91b492ddd571">
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="416215e1-ec3f-4ad3-b8af-67fc105d00de"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9185319f-f812-4a07-8891-ef6f97a1ae58">
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5e7c5213-d55b-4633-b77c-f373d7436262"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="20" y="22" width="100" height="20" uuid="f8b2c9ce-c870-4b6b-8888-98ea27de4082"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[ACTIVOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="44" width="131" height="20" uuid="599d4be9-f41e-4c44-8297-fd0cad154168"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[ACTIVOS CORRIENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="22" width="100" height="20" uuid="8a9192d2-1715-42c1-96df-a34754392390"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[PASIVOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="42" width="131" height="20" uuid="9915b4a3-bc25-4a75-99c9-195e91c106fd"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[PASIVOS CORRIENTES]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="355" y="64" width="130" height="20" uuid="9ffd88c7-f908-415e-808d-1ad3bf4d74e4"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="pasivos_corrientes" uuid="59fa5e35-5893-4d6a-8e92-d68d1935a750">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e93c1d79-b5e0-48b4-8fcb-dfd98056c702">
+						<jr:detailCell style="table 2_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="dd69026b-48fd-4354-ba7b-6dc09668dea6"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="8d5aa003-30f8-4ff8-9a25-9be3928d789b">
+						<jr:detailCell style="table 2_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5fb740ff-b455-40ce-9aac-7c14a38db4bf"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="84">
+			<staticText>
+				<reportElement x="44" y="32" width="153" height="20" uuid="22c062f3-fc9d-4617-903d-b6e4cf55e00a"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[ACTIVOS NO CORRIENTES]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" x="62" y="56" width="166" height="20" uuid="457ac2d6-531c-4a30-a5ae-b2d6d5e56c59"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="activos_no_corrientes" uuid="50fb9d01-cf9a-4405-a9b5-e468fc755abb">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="271b6f10-f498-43dd-aba0-9603c8386bc8">
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8b39269a-d994-4d4f-b256-9c630fd65a6f"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="143fb665-cac0-4a84-8ff9-e66ea3d5b17f">
+						<jr:detailCell style="table 1_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="eb16d415-fc98-4e95-8731-125254185ae5"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="337" y="36" width="131" height="20" uuid="9afa834d-5ef7-4e0c-8d7d-86fe68056bf4"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[PASIVOS NO CORRIENTES]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="366" y="59" width="119" height="20" uuid="c97e067e-0956-42ad-9735-0e8eda44f211"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="pasivos_no_corrientes" uuid="8ae56757-40ad-42c8-b1c0-c838c0ba4f75">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="9923fdc9-964a-4b44-bf6d-65af337ac4de">
+						<jr:detailCell style="table 3_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="23d03419-6c5d-45fc-92f5-a3cfa7d176bc"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9e0841b6-7d65-4064-bf03-954e02c737c5">
+						<jr:detailCell style="table 3_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="13893da9-ea30-4305-9d46-15e6220db2dd"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="45" y="4" width="135" height="20" uuid="770ec899-6664-4d24-9543-9b7ee2b2e150"/>
+				<text><![CDATA[Total activos corrientes = ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="5" width="135" height="20" uuid="c9b42742-c6c7-4606-adf9-f617895c465b"/>
+				<text><![CDATA[Total pasivos corrientes = ]]></text>
+			</staticText>
+		</band>
+		<band height="74">
+			<staticText>
+				<reportElement x="312" y="29" width="131" height="20" uuid="e0d4a9b3-8595-4320-9e3c-ec39ef0635fd"/>
+				<textElement>
+					<font fontName="URW Gothic"/>
+				</textElement>
+				<text><![CDATA[CAPITAL]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table 4" style="table 4" x="366" y="49" width="119" height="20" uuid="f058f9b6-e28b-4b3c-9287-0be3dc9deb20"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="capital" uuid="35c6e9e1-bbc3-43aa-b45b-2c165404eff9">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="a1a547e0-bca4-42f3-b8bb-560177232123">
+						<jr:detailCell style="table 4_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6a42a6e9-6ff9-429d-83a3-015765434ae5"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="e17d76a4-3f95-4987-8d95-6e3695a06f64">
+						<jr:detailCell style="table 4_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="984e2b4c-0dd5-418d-85c8-f539a2d35b90"/>
+								<textElement>
+									<font fontName="URW Gothic"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement x="338" y="5" width="148" height="20" uuid="e77d7f40-e968-4c77-9643-c3a7c4f7f387"/>
+				<text><![CDATA[Total pasivos no corrientes = ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="5" width="152" height="20" uuid="ba05d3d8-8f88-498b-a6d3-ca2bce1a64d1"/>
+				<text><![CDATA[Total activos no corrientes = ]]></text>
+			</staticText>
+		</band>
+		<band height="57"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<staticText>
+				<reportElement x="312" y="-55" width="135" height="20" uuid="f1984e85-9fd6-4717-97dd-4f7f81d5ec04"/>
+				<text><![CDATA[Total capital = ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="-25" width="135" height="20" uuid="c31d6b0f-7f8b-49d6-9d00-a5a8d8ab2a75"/>
+				<text><![CDATA[TOTAL ACTIVOS =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="-25" width="160" height="20" uuid="68b8b9bf-d2b3-4938-9486-80ab8cf5af8d"/>
+				<text><![CDATA[TOTAL PASIVOS + CAPITAL =]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

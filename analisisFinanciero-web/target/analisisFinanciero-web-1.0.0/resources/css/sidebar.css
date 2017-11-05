@@ -1,0 +1,117 @@
+h3 {
+    color: #fff !important;
+    font-size: 18px !important;
+}
+@media only screen and (min-width: 641px) {
+    .dropdown-wrapper {
+        background-color: #333333 !important;
+        width: 540px !important;
+        padding: 10px 0;
+    }
+}
+
+.bolado{
+    background: #c0392b; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #c0392b, #8e44ad); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #c0392b, #8e44ad); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.boladito{
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 80px 0;
+    height: 400px;
+    text-align: center;
+
+
+    h1{
+        font-size: 40px;
+        font-weight: 200;
+        color: #ffffff !important;
+    }
+}
+
+@-webkit-keyframes square {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-700px) rotate(600deg); }
+}
+@keyframes square {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-700px) rotate(600deg); }
+}
+
+p{
+    background: linear-gradient(to left, #141E30 , #243B55); 
+    font-size: 21px;
+    padding: 105px;
+    border-radius: 5px;
+    margin: 10px;
+    color: #ffffff;
+}
+$button-color: #000222;
+$light-color:#e96043;
+$white-color:#fff;
+$dark-color:#58519F;
+
+.button-group{
+    width:500px;
+    margin: auto;
+    padding: 0;
+    text-align:center;
+}
+
+button{
+    background-color:$button-color;
+    border-radius: 4px;
+
+    border: none;
+    color:$white-color;
+    text-align: center;
+
+    padding:15px 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+.button-one{
+    display: inline-block;
+
+
+    span{
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        font-size:1.2rem;
+        &:after{
+            content: '»';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+    }
+    &:hover {
+        background:$light-color;
+        span {
+            padding-right: 25px;
+            &:after{
+                opacity: 1;
+                right: 0;
+            }
+        }
+    }
+}
+
+
+
+

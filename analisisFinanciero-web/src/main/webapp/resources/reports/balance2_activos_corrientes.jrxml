@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="balance2_activos_corrientes" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2b23e076-4c24-4337-a3bc-1039431958bb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="saldos" uuid="f8b91afe-1d77-4d56-bb22-0ef18c05d2e8">
+		<queryString>
+			<![CDATA[SELECT SUM(saldo) FROM cuentas]]>
+		</queryString>
+		<field name="SUM(saldo)" class="java.math.BigDecimal"/>
+		<group name="SUM(saldo)">
+			<groupExpression><![CDATA[$F{SUM(saldo)}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+cuentas.`nombreCuenta` AS cuentas_nombreCuenta,
+cuentas.`saldo` AS cuentas_saldo
+FROM
+`cuentas` cuentas
+WHERE cuentas.`tipoCuenta` =  6;]]>
+	</queryString>
+	<field name="cuentas_nombreCuenta" class="java.lang.String"/>
+	<field name="cuentas_saldo" class="java.math.BigDecimal"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<variable name="SUM(saldo)_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<group name="cuentas_tipoCuenta">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<group name="cuentas_saldo">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="223" y="9" width="134" height="20" uuid="287badb3-2262-4dfb-a895-24fd66d67513"/>
+				<text><![CDATA[ACTIVOS CORRIENTES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="17" y="6" width="100" height="20" uuid="88e37fbb-51f9-4de3-9af7-baa2e94282ed"/>
+				<textFieldExpression><![CDATA[$F{cuentas_nombreCuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="5" width="100" height="20" uuid="dd58aa21-e9a7-48c4-b09f-f1f818b0e60d"/>
+				<textFieldExpression><![CDATA[$F{cuentas_saldo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="41" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

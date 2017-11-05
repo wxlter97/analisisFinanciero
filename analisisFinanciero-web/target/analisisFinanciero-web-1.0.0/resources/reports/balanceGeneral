@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d31a65e4-1ea6-4ec9-99e7-9b18d92a8385">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     cuentas.`ID` AS cuentas_ID,
+     cuentas.`nombreCuenta` AS cuentas_nombreCuenta,
+     cuentas.`saldo` AS cuentas_saldo,
+     cuentas.`tipoCuenta` AS cuentas_tipoCuenta,
+     tipoCuenta.`ID` AS tipoCuenta_ID,
+     tipoCuenta.`nombreTipoCuenta` AS tipoCuenta_nombreTipoCuenta,
+     tipoCuenta.`cuentaPadre` AS tipoCuenta_cuentaPadre
+FROM
+     `tipoCuenta` tipoCuenta INNER JOIN `cuentas` cuentas ON tipoCuenta.`ID` = cuentas.`tipoCuenta`
+GROUP BY
+     cuentas_tipoCuenta]]>
+	</queryString>
+	<field name="cuentas_tipoCuenta" class="java.lang.Integer"/>
+	<field name="tipoCuenta_cuentaPadre" class="java.lang.Integer"/>
+	<group name="cuentas_tipoCuenta">
+		<groupExpression><![CDATA[$F{cuentas_tipoCuenta}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="4dda507a-ba8b-43da-a443-7fea6b2fd921"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[cuentas_tipoCuenta]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="bd1b2ef9-aa8e-4695-8e33-88062467fbe1"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cuentas_tipoCuenta}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="47fb4954-9bb0-45db-bca0-9f193a5bb2f6"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="tipoCuenta_cuentaPadre">
+		<groupExpression><![CDATA[$F{tipoCuenta_cuentaPadre}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="9784444b-f8e2-4f3d-9bbb-6cf443b41e42"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipoCuenta_cuentaPadre}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="c21acf55-35e0-4824-9657-a27620de62c7"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[tipoCuenta_cuentaPadre]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="c436d783-b5ce-48bf-8f73-4c5bfbc8d550"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="6dfedb04-4dd6-4e20-89ed-11f3119d6ff7"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="bd460aae-c6d7-44ab-be6f-be9a78a24cbe"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="4148d283-bdd7-4e26-b1a2-623e1365176f"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="aea345d3-7c42-406d-a75e-f8d81e1074a3"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="6f07ee00-0b8a-4581-83a2-7f983261e92c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="da60b99e-64d6-410d-93d0-a11b1c1ceebd"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="03c82bd1-d707-4e96-abb3-c05fdf1731ab"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

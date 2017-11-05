@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Cuentas</title>
+        <h:outputStylesheet library="css" name="styleTable.css"/>
+    </h:head>
+
+    <h:body>
+        <div id="top">
+            <header id="main-header">
+                <img class="icon" src="./resources/img/ues.png" width="50" height="60"/>
+                <a id="logo-header" href="index.jsf">
+                    <span class="site-name">Analisis Financiero</span>
+                    <span class="site-desc">Ciclo 2, 2017. UES FMOcc</span>
+                </a> 
+
+                <nav>
+                    <ul>
+                        <li><a><p:link  value="Inicio"></p:link></a></li>
+                        <li><a><p:link value="Reportes"></p:link></a></li>
+                        <li><a><p:link  value="Cuentas"></p:link></a></li>
+
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+
+        <h:form id='frmTabla'>
+            <br/><br/>
+            <p:dataTable value="#{mbCuentas.cargarTabla()}" id="tb-cuentas"
+                         class="tablaclass"
+                         var="item"     
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,15,20"
+                         paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         selectionMode="single"
+                         rowKey="#{item.id}"
+                         selection="#{mbCuentas.selectedCuenta}"
+                         >
+                <p:ajax event="rowSelect" listener="#{mbCuentas.changeSelected}"/>
+                <p:column headerText="ID" class="colum-id">
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column >
+                <p:column headerText="Nombre">
+                    <f:facet name="header">
+                        <h:outputText value="Nombre Cuenta"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombreCuenta}"/>
+                </p:column>
+                <p:column headerText="Tipo Cuenta">
+                    <f:facet name="header">
+                        <h:outputText value="Tipo Cuenta"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipoCuenta.nombreTipoCuenta}"/>
+                </p:column >
+            </p:dataTable>
+            <p:commandButton onclick="PF('agregarCuenta').show()"/>
+
+        </h:form>
+
+        <p:dialog id="dialog" 
+                  modal="true" 
+                  widgetVar="agregarCuenta"   
+                  >                      
+            <h:form id="holaPapu">
+                <h:panelGrid columns="1" styleClass="form-style-8">
+
+                    <h:panelGrid id="holi" columns="2" width="100%">
+                        <p:outputLabel  for="nombrep" value="Nombre Cuenta:"/>
+                        <p:inputText   id="nombrep"  value="#{mbCuentas.newCuenta.nombreCuenta}" maxlength="45" style="width: 100%" />
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="2" id="papu" width="100%">
+                        <p:outputLabel for="tipoCuenta" value="Tipo de Cuenta:"/>
+                        <p:selectOneMenu  style="width: 90%;" id="tipoCuenta" value="#{mbCuentas.newCuenta.tipoCuenta}" converter="omnifaces.SelectItemsConverter">
+                            <p:ajax event="change" update="papu1" listener="#{mbCuentas.changeMierda}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems   value="#{mbTipoCuentas.listaC}" var="id" itemLabel="#{id.nombreTipoCuenta}" itemValue="#{id}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+
+                    <h:panelGrid id="papu1" columns="2" width="100%">
+                        <p:outputLabel  rendered="#{mbCuentas.nivel1}" for="tipoCuenta2" value="Tipo de Cuenta:"/>
+                        <p:selectOneMenu  rendered="#{mbCuentas.nivel1}" id="tipoCuenta2" style="width: 90%;" value="#{mbCuentas.newCuenta.tipoCuenta}" effect="fold" converter="omnifaces.SelectItemsConverter">
+                            <p:ajax event="change" update="papu2" listener="#{mbCuentas.changeMierda2}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems  value="#{mbCuentas.lista}" var="id" itemLabel="#{id.nombreTipoCuenta}" itemValue="#{id}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+
+                    <h:panelGrid id="papu2" columns="2" width="100%">
+                        <p:outputLabel rendered="#{mbCuentas.nivel2}" for="tipoCuenta3"  value="Tipo de Cuenta:"/>
+                        <p:selectOneMenu rendered="#{mbCuentas.nivel2}" id="tipoCuenta3" style="width: 90%;" value="#{mbCuentas.newCuenta.tipoCuenta}" effect="fold" converter="omnifaces.SelectItemsConverter">
+                            <p:ajax event="change" update="monto" listener="#{mbCuentas.changeMierda3}"/>
+                            <f:selectItem itemLabel="Seleccionar" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems  value="#{mbCuentas.lista2}" var="id" itemLabel="#{id.nombreTipoCuenta}" itemValue="#{id}"/>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+                    <br/>
+
+                    <h:panelGrid id="monto" columns="2" width="100%">
+                        <p:outputLabel rendered="#{mbCuentas.nivel3}" for="txtMonto"  value="Monto inicial:"/>
+                        <p:inputNumber style="width: 100%"  decimalPlaces="2" decimalSeparator="."  required="true" thousandSeparator="," rendered="#{mbCuentas.nivel1}" id="txtMonto" placeholder="$0 por defecto" symbol="$" value="#{mbCuentas.newCuenta.saldo}"/>
+
+                    </h:panelGrid>
+
+
+                    <h:panelGrid id="botoncitos" columns="2" width="100%">
+                        <p:commandButton  value="Guardar"  
+                                          id='btnGuardar'
+                                          icon="ui-icon-disk"
+                                          actionListener="#{mbCuentas.crearCuenta()}"
+                                          oncomplete="PF('agregarCuenta').hide()"
+                                          update="frmTabla dialog"
+                                          />
+                        <p:commandButton value="Cancelar" 
+                                         icon="ui-icon-cancel" 
+                                         type="button"/>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+    </h:body>
+</html>
